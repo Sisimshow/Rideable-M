@@ -213,7 +213,7 @@ class Ridingmanager {
 		}
 		else {
 			if (!game.paused) {
-				game.socket.emit("module.Rideable", {pFunction : "UpdateRidderTokensRequest", pData : {pRiddenID: pRiddenToken.id, pRidersListIDs: RideableUtils.IDsfromTokens(pRiderTokenList), pSceneID : FCore.sceneof(pRiddenToken).id, pAnimations : pAnimations}});
+				game.socket.emit("module."+cModuleName, {pFunction : "UpdateRidderTokensRequest", pData : {pRiddenID: pRiddenToken.id, pRidersListIDs: RideableUtils.IDsfromTokens(pRiderTokenList), pSceneID : FCore.sceneof(pRiddenToken).id, pAnimations : pAnimations}});
 			}
 		}
 	} 

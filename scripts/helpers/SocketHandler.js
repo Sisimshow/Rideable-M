@@ -4,6 +4,7 @@ import { PopUpRequest } from "./RideablePopups.js";
 import { RequestRideableTeleport } from "../compatibility/RideableCompatibility.js";
 import { switchScene } from "../utils/RideableUtils.js";
 import { FollowTokenRequest, StopFollowingRequest } from "../FollowingScript.js";
+import { cModuleName } from "../utils/RideableUtils.js";
 
 //execute functions with pData depending on pFunction
 function organiseSocketEvents({pFunction, pData} = {}) {
@@ -41,4 +42,4 @@ function organiseSocketEvents({pFunction, pData} = {}) {
 	}
 }
 
-Hooks.once("ready", () => { game.socket.on("module.Rideable", organiseSocketEvents); });
+Hooks.once("ready", () => { game.socket.on("module."+cModuleName, organiseSocketEvents); });

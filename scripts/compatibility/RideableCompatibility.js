@@ -45,7 +45,7 @@ class RideableCompatibility {
 				RideableCompatibility.RequestRideableTeleport(pData.selectedTokenIds, pData.sourceSceneId, pData.targetSceneId, pData.targetData, game.user.id);
 			}
 			else {
-				game.socket.emit("module.Rideable", {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : pData.selectedTokenIds, pSourceSceneID : pData.sourceSceneId, pTargetSceneID : pData.targetSceneId, pTarget : {x : pData.targetData.x, y : pData.targetData.y}, pUserID : pData.userId}});
+				game.socket.emit("module."+cModuleName, {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : pData.selectedTokenIds, pSourceSceneID : pData.sourceSceneId, pTargetSceneID : pData.targetSceneId, pTarget : {x : pData.targetData.x, y : pData.targetData.y}, pUserID : pData.userId}});
 			}
 			*/
 		}
@@ -77,7 +77,7 @@ class RideableCompatibility {
 			if (vRidersofPorters.length) {
 				await RideableCompatibility.SWTeleportleftTokens(vRidersofPorters.map(vToken => vToken.id), pTile.parent, game.scenes.get(pInfos.data.location.sceneId), {x: pInfos.data.location.x, y: pInfos.data.location.y}, game.users.get(pUserID), pInfos.data.deletesource, false, false);
 			else {
-				game.socket.emit("module.Rideable", {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : pData.selectedTokenIds, pSourceSceneID : pData.sourceSceneId, pTargetSceneID : pData.targetSceneId, pTarget : {x : pData.targetData.x, y : pData.targetData.y}, pUserID : pData.userId}});
+				game.socket.emit("module."+cModuleName, {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : pData.selectedTokenIds, pSourceSceneID : pData.sourceSceneId, pTargetSceneID : pData.targetSceneId, pTarget : {x : pData.targetData.x, y : pData.targetData.y}, pUserID : pData.userId}});
 			}
 			*/
 		}
@@ -89,7 +89,7 @@ class RideableCompatibility {
 			RideableCompatibility.RequestRideableTeleport(pData.selectedTokenIds, pData.sourceSceneId, pData.targetSceneId, pData.targetData, game.user.id);
 		}
 		else {
-			game.socket.emit("module.Rideable", {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : pData.selectedTokenIds, pSourceSceneID : pData.sourceSceneId, pTargetSceneID : pData.targetSceneId, pTarget : {x : pData.targetData.x, y : pData.targetData.y}, pUserID : pData.userId}});
+			game.socket.emit("module."+cModuleName, {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : pData.selectedTokenIds, pSourceSceneID : pData.sourceSceneId, pTargetSceneID : pData.targetSceneId, pTarget : {x : pData.targetData.x, y : pData.targetData.y}, pUserID : pData.userId}});
 		}
 	}
 	
@@ -213,11 +213,11 @@ class RideableCompatibility {
 					let vUsers = RideableUtils.UserofCharacterID(vselectedTokensData[i].actorId);
 					
 					for (let j = 0; j < vUsers.length; j++) {
-						game.socket.emit("module.Rideable", {pFunction : "switchScene", pData : {pUserID : vUsers[j].id, pSceneID : pTargetScene.id, px : pTarget.x, py : pTarget.y}});
+						game.socket.emit("module."+cModuleName, {pFunction : "switchScene", pData : {pUserID : vUsers[j].id, pSceneID : pTargetScene.id, px : pTarget.x, py : pTarget.y}});
 					}
 				}		
 				
-				game.socket.emit("module.Rideable", {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : vValidTokenIDs, pSourceSceneID : pSourceScene.id, pTargetSceneID : pTargetScene.id, pTarget : {x : pTarget.x, y : pTarget.y}, pUserID : pUser.id}});
+				game.socket.emit("module."+cModuleName, {pFunction : "RequestRideableTeleport", pData : {pTokenIDs : vValidTokenIDs, pSourceSceneID : pSourceScene.id, pTargetSceneID : pTargetScene.id, pTarget : {x : pTarget.x, y : pTarget.y}, pUserID : pUser.id}});
 			}
 		}
 		
@@ -704,10 +704,10 @@ Hooks.once("setupTileActions", (pMATT) => {
 					if (vMount) {
 						switch(action.data?.filterCondition) {
 							case "rider":
-								vFiltered = entities.filter(vObject => game.modules.get("Rideable").api.RideableFlags.isRiddenby(vMount, vObject));
+								vFiltered = entities.filter(vObject => game.modules.get(cModuleName).api.RideableFlags.isRiddenby(vMount, vObject));
 								break;
 							case "notrider":
-								vFiltered = entities.filter(vObject => !game.modules.get("Rideable").api.RideableFlags.isRiddenby(vMount, vObject));
+								vFiltered = entities.filter(vObject => !game.modules.get(cModuleName).api.RideableFlags.isRiddenby(vMount, vObject));
 								break;
 						}
 					}
@@ -783,10 +783,10 @@ Hooks.once("setupTileActions", (pMATT) => {
 		
 					switch(action.data?.filterCondition) {
 						case "rider":
-							vFiltered = entities.filter(vObject => game.modules.get("Rideable").api.RideableFlags.isRider(vObject));
+							vFiltered = entities.filter(vObject => game.modules.get(cModuleName).api.RideableFlags.isRider(vObject));
 							break;
 						case "notrider":
-							vFiltered = entities.filter(vObject => !game.modules.get("Rideable").api.RideableFlags.isRider(vObject));
+							vFiltered = entities.filter(vObject => !game.modules.get(cModuleName).api.RideableFlags.isRider(vObject));
 							break;
 					}
 
@@ -857,10 +857,10 @@ Hooks.once("setupTileActions", (pMATT) => {
 		
 					switch(action.data?.filterCondition) {
 						case "ridden":
-							vFiltered = entities.filter(vObject => game.modules.get("Rideable").api.RideableFlags.isRidden(vObject));
+							vFiltered = entities.filter(vObject => game.modules.get(cModuleName).api.RideableFlags.isRidden(vObject));
 							break;
 						case "notridden":
-							vFiltered = entities.filter(vObject => !game.modules.get("Rideable").api.RideableFlags.isRidden(vObject));
+							vFiltered = entities.filter(vObject => !game.modules.get(cModuleName).api.RideableFlags.isRidden(vObject));
 							break;
 					}
 

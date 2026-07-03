@@ -164,7 +164,7 @@ class MountingManager {
 					
 					let vselectedTokenIDs = RideableUtils.IDsfromTokens(vValidRiders);
 					
-					game.socket.emit("module.Rideable", {pFunction : "MountRequest", pData : {pTargetID: vcurrentTargetID, pselectedTokensID: vselectedTokenIDs, pSceneID : FCore.sceneof(vTarget).id, pRidingOptions : pRidingOptions}});
+					game.socket.emit("module."+cModuleName, {pFunction : "MountRequest", pData : {pTargetID: vcurrentTargetID, pselectedTokensID: vselectedTokenIDs, pSceneID : FCore.sceneof(vTarget).id, pRidingOptions : pRidingOptions}});
 				}
 			}
 		}
@@ -247,7 +247,7 @@ class MountingManager {
 			}
 			else {
 				if (!game.paused) {
-					game.socket.emit("module.Rideable", {pFunction : "MountRequest", pData : {pTargetID: pTarget.id, pselectedTokensID: RideableUtils.IDsfromTokens(pselectedTokens), pSceneID : FCore.sceneof(pTarget).id, pRidingOptions : pRidingOptions}});
+					game.socket.emit("module."+cModuleName, {pFunction : "MountRequest", pData : {pTargetID: pTarget.id, pselectedTokensID: RideableUtils.IDsfromTokens(pselectedTokens), pSceneID : FCore.sceneof(pTarget).id, pRidingOptions : pRidingOptions}});
 				}
 			}
 		}
@@ -324,7 +324,7 @@ class MountingManager {
 			if (!game.paused && pTokens.length) {
 				let vUnMountTokensIDs = RideableUtils.IDsfromTokens(pTokens);
 				
-				game.socket.emit("module.Rideable", {pFunction : "UnMountRequest", pData : {pselectedTokenIDs: vUnMountTokensIDs, pSceneID : FCore.sceneof(pTokens[0]).id, pfromRidden: pfromRidden}});
+				game.socket.emit("module."+cModuleName, {pFunction : "UnMountRequest", pData : {pselectedTokenIDs: vUnMountTokensIDs, pSceneID : FCore.sceneof(pTokens[0]).id, pfromRidden: pfromRidden}});
 			}
 		}
 	} 

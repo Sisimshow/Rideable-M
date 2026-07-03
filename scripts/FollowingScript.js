@@ -144,7 +144,7 @@ class FollowingManager {
 	static RequestFollowToken(pFollowers, pTarget, pDistance = -1) {
 		// Send request to GM via socket
 		if (!game.paused && pFollowers.length && pTarget) {
-			game.socket.emit("module.Rideable", {
+			game.socket.emit("module."+cModuleName, {
 				pFunction: "FollowTokenRequest",
 				pData: {
 					pFollowerIDs: RideableUtils.IDsfromTokens(pFollowers),
@@ -178,7 +178,7 @@ class FollowingManager {
 	static RequestStopFollowing(pFollowers, pPopup = true) {
 		// Send request to GM via socket
 		if (!game.paused && pFollowers.length) {
-			game.socket.emit("module.Rideable", {
+			game.socket.emit("module."+cModuleName, {
 				pFunction: "StopFollowingRequest",
 				pData: {
 					pFollowerIDs: RideableUtils.IDsfromTokens(pFollowers),

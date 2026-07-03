@@ -38,7 +38,7 @@ class RideablePopups {
 		}
 		
 		//other clients pop up
-		game.socket.emit("module.Rideable", {pFunction : "PopUpRequest", pData : {pTokenID: pToken.id, pText : vText}});
+		game.socket.emit("module."+cModuleName, {pFunction : "PopUpRequest", pData : {pTokenID: pToken.id, pText : vText}});
 		
 		//own pop up
 		RideablePopups.PopUpRequest(pToken.id, vText);

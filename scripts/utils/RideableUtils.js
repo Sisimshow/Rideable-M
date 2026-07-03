@@ -5,7 +5,7 @@ import { TileUtils } from "./TileUtils.js";
 import { RideableFlags} from "../helpers/RideableFlags.js";
 
 //CONSTANTS
-const cModuleName = "Rideable"; //name of Module
+const cModuleName = "rideable-m"; //name of Module
 
 const cPopUpID = "Popup";
 
