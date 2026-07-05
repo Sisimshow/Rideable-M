@@ -10,7 +10,7 @@
     "name": "sisimshow"
     }
   ],
-  "version": "5.0.1",
+  "version": "5.0.2",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -82,7 +82,7 @@
   ],
   "relationships": {},
   "url": "https://github.com/sisimshow/rideable-m",
-  "download": "https://github.com/sisimshow/rideable-m/releases/latest/download/rideable-m-5.0.1.zip",
+  "download": "https://github.com/sisimshow/rideable-m/releases/latest/download/rideable-m-5.0.2.zip",
   "manifest": "https://github.com/sisimshow/rideable-m/releases/latest/download/module.json",
   "readme": "https://github.com/sisimshow/rideable-m/blob/main/README.md",
   "bugs": "https://github.com/sisimshow/rideable-m/issues"
