@@ -1,7 +1,7 @@
 {
 	"rideable-m" : {
 		"Titles" : {
-			"Rideable"                  : "Montable",
+			"rideable-m"                : "Montable",
 			"WorldSettings"             : "Paramètres du monde (MJ uniquement)",
 			"ClientSettings"            : "Paramètres client",
 			"GMonly"                    : "MJ uniquement",

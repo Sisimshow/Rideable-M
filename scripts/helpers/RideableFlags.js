@@ -282,7 +282,7 @@ class RideableFlags {
 	//returns all Module Flags of pToken (if any) (can contain Riding and Riders Flags)
 		if (pToken) {
 			if (pToken.flags.hasOwnProperty(cModuleName)) {
-				return pToken.flags.Rideable;
+				return pToken.flags[cModuleName];
 			}
 		}
 		

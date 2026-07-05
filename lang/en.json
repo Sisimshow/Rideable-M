@@ -1,7 +1,7 @@
 {
 	"rideable-m" : {
 		"Titles" : {
-			"Rideable"					: "Rideable",
+			"rideable-m"				: "Rideable",
 			"WorldSettings"				: "World settings (GM only)",
 			"ClientSettings"			: "Client settings",
 			"GMonly"					: "GM only",

@@ -170,9 +170,9 @@ class RideableCompUtils {
 	
 	static PreviousID(pToken) {
 		if (pToken) {
-			if (pToken.flags.Rideable) {
-				if (pToken.flags.Rideable.PreviousIDFlag) {
-					return pToken.flags.Rideable.PreviousIDFlag;
+			if (pToken.flags[cModuleName]) {
+				if (pToken.flags[cModuleName].PreviousIDFlag) {
+					return pToken.flags[cModuleName].PreviousIDFlag;
 				}
 			}
 		}
